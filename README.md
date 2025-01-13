@@ -28,8 +28,11 @@ A secure payment management and verification system featuring user authenticatio
 ### Payment Management
 
 - **User Features**:
+
   - Create a payment request (Title, Amount, Status).
   - View and track payment status (`Pending`, `Approved`, `Rejected`).
+  - Checkout with Stripe.
+
 - **Admin Features**:
   - View all payments submitted by users.
   - Approve or reject payment requests and update their status.
@@ -66,7 +69,8 @@ Create a `.env` file in the root directory and add the following:
 NEXT_PUBLIC_SUPABASE_URL=<your_supabase_url>
 NEXT_PUBLIC_SUPABASE_ANON_KEY=<your_supabase_anon_key>
 NEXT_PUBLIC_APP_URL = "http://localhost:3000"
-DATABASE_URL=<your_database_url>
+DATABASE_URL= <your_database_url>
+STRIPE_SECRET_KEY = <your_stripe_secret_key>
 ```
 
 ### Run the development server:
@@ -78,6 +82,5 @@ npm run dev
 ### To Do
 
 - **Error Handling**: Handle errors gracefully and provide meaningful error messages to users.
-- **Payment Gateway Integration**: Stripe/PayPal sandbox for payments.
 - **Email Notifications**: Updates for status changes.
 - **PDF Invoices**: Generate invoices for completed payments.

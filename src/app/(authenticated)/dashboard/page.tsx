@@ -1,6 +1,7 @@
 "use client";
 
 import getDocuments from "@/actions/getDocuments";
+import { makeStripePayment } from "@/actions/makeStripePayment";
 import { NewPaymentDialog } from "@/components/NewPayment";
 import {
   Card,
@@ -63,10 +64,24 @@ export default function Dashboard() {
             <CardContent>
               <p>Status: {payment?.status}</p>
             </CardContent>
-            <CardFooter>
+            <CardFooter className="flex justify-between">
               <p className="text-sm text-gray-500">
                 Created at: {new Date(payment?.createdAt).toLocaleString()}
               </p>
+              <button
+                onClick={() => {
+                  makeStripePayment({
+                    title: payment.title,
+                    price: payment.amount,
+                  });
+                }}
+              >
+                <img
+                  src="/stripe.png"
+                  alt="download"
+                  className="w-[100px] h-6 object-cover rounded-md"
+                />
+              </button>
             </CardFooter>
           </Card>
         ))}
