@@ -28,7 +28,7 @@ export async function signup(formData: FormData) {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
     options: {
-      data: { role: "user" },
+      data: { role: "admin" },
     },
   };
 

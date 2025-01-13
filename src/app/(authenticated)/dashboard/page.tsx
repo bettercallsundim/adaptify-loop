@@ -83,7 +83,7 @@ export default function Dashboard() {
           <Card key={document?.id}>
             <CardHeader>
               <div className="flex items-center justify-between">
-                <span>{document?.fileName?.slice(0, 10)}</span>
+                <span>{document?.fileName}</span>
                 <a href={document?.fileUrl} target="_blank">
                   <Download />
                 </a>

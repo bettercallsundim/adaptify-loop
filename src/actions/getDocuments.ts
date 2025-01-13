@@ -12,7 +12,7 @@ export default async function getDocuments() {
 
   let documents;
 
-  if (user?.role === "admin") {
+  if (user?.user_metadata?.role === "admin") {
     documents = await prisma.document.findMany({
       include: {
         user: true,
@@ -28,7 +28,7 @@ export default async function getDocuments() {
       },
     });
   }
-  console.log("🚀 ~ getDocuments ~ documents:", documents)
+  console.log("🚀 ~ getDocuments ~ documents:", documents);
 
   return {
     success: true,
