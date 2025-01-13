@@ -36,7 +36,7 @@ export default function AdminDashboard() {
         </CardContent>
       </Card>
 
-      <div className="grid grid-cols-2 gap-4 mt-8">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 mt-8">
         <PaymentChart />
         <DocumentChart />
       </div>
