@@ -1,6 +1,7 @@
 "use client";
 
 import getDocuments from "@/actions/getDocuments";
+import updateDoucmentVerificationStatus from "@/actions/updateDocumentVerificationStatus";
 import {
   Select,
   SelectContent,
@@ -50,15 +51,19 @@ export function DocumentTable() {
             <TableCell>
               <Select
                 value={document.status}
-                onValueChange={(value: Status) =>
+                onValueChange={(value: Status) => {
+                  updateDoucmentVerificationStatus({
+                    documentId: document.id,
+                    status: value,
+                  });
                   setDocuments(
-                    documents?.map((document) =>
-                      document.id === document.id
-                        ? { ...document, status: value }
-                        : document
+                    documents?.map((dcmnt) =>
+                      dcmnt.id === document.id
+                        ? { ...dcmnt, status: value }
+                        : dcmnt
                     )
-                  )
-                }
+                  );
+                }}
               >
                 <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="Select status" />

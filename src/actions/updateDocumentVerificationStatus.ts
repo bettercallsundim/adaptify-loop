@@ -3,32 +3,38 @@ import prisma from "@/lib/db";
 import { getUserServer } from "@/utils/getUser";
 import { Status } from "@prisma/client";
 
-export default async function uploadVerification({
+export default async function updateDoucmentVerificationStatus({
   documentId,
   status,
 }: {
-  documentId: string;
+  documentId: number;
   status: Status;
-}) {
-  const user = await getUserServer();
+}): Promise<{ success: boolean }> {
+  try {
+    const user = await getUserServer();
 
-  if (!user?.email)
+    if (!user?.email)
+      return {
+        success: false,
+      };
+    await prisma.document.update({
+      where: {
+        id: documentId,
+      },
+      data: {
+        status,
+      },
+    });
+
+    return {
+      success: true,
+    };
+  } catch (error) {
+    if (error instanceof Error) {
+      console.log(error);
+    }
     return {
       success: false,
     };
-
-  await prisma.document.update({
-    where: {
-      id: +documentId,
-      userId: user.email,
-    },
-    data: {
-      userId: user.email,
-      status,
-    },
-  });
-
-  return {
-    success: true,
-  };
+  }
 }

@@ -49,7 +49,7 @@ export function PaymentChart() {
   }, []);
 
   return (
-    <Card className="w-[500px] h-auto">
+    <Card className="w-full md:w-[500px] h-auto">
       <CardHeader>
         <CardTitle className="mb-4">Payment Analytics</CardTitle>
         <CardDescription>

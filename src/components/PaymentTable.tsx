@@ -71,10 +71,10 @@ export function PaymentTable() {
                 onValueChange={(value: Status) => {
                   updatePaymentStatus(payment.id, value);
                   setPayments(
-                    payments.map((payment) =>
-                      payment.id === payment.id
-                        ? { ...payment, status: value }
-                        : payment
+                    payments.map((pymnt) =>
+                      pymnt.id === payment.id
+                        ? { ...pymnt, status: value }
+                        : pymnt
                     )
                   );
                 }}
