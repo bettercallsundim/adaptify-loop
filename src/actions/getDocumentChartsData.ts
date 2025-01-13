@@ -19,7 +19,7 @@ export default async function getDocumentChartsData(): Promise<
 > {
   const user = await getUserServer();
 
-  if (!user?.email || user?.user_metadata?.role === "admin")
+  if (!user?.email || user?.user_metadata?.role !== "admin")
     return {
       success: false,
     };
