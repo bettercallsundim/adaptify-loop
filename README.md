@@ -4,7 +4,7 @@ A secure payment management and verification system featuring user authenticatio
 
 ## Live Demo
 
-[Live Application URL](#) (Hosted on Vercel)
+[Live Application URL](https://adaptify-loop.vercel.app/) (Hosted on Vercel)
 
 ## Admin Credentials
 
