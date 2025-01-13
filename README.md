@@ -43,14 +43,6 @@ A secure payment management and verification system featuring user authenticatio
 
 - Summary of total payments and status-based breakdowns.
 
-### To Do
-
-- **Payment Gateway Integration**: Stripe/PayPal sandbox for payments.
-- **Payment Gateway Integration**: Stripe/PayPal sandbox for payments.
-- **Email Notifications**: Updates for status changes.
-- **PDF Invoices**: Generate invoices for completed payments.
-- **Admin Analytics**: Charts summarizing payment statuses.
-
 ---
 
 ## Tech Stack
@@ -82,3 +74,10 @@ DATABASE_URL=<your_database_url>
 ```bash
 npm run dev
 ```
+
+### To Do
+
+- **Error Handling**: Handle errors gracefully and provide meaningful error messages to users.
+- **Payment Gateway Integration**: Stripe/PayPal sandbox for payments.
+- **Email Notifications**: Updates for status changes.
+- **PDF Invoices**: Generate invoices for completed payments.
