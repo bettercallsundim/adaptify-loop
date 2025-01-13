@@ -59,6 +59,7 @@ export function NewPaymentDialog({
       });
       router.push("/dashboard");
       setIsOpen(false);
+      form.reset();
       setRefetch((prev) => prev + 1);
     } catch (error) {
       console.error("Error creating payment:", error);

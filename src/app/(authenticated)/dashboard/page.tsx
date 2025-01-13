@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import getDocuments from "@/actions/getDocuments";
@@ -12,8 +14,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { UploadVerification } from "@/components/UploadVerification";
+import { createClient } from "@/utils/supabase/client";
 import { Document, Payment } from "@prisma/client";
+import { User } from "@supabase/supabase-js";
 import { Download } from "lucide-react";
+
 import { useEffect, useState } from "react";
 
 export default function Dashboard() {
@@ -21,6 +26,19 @@ export default function Dashboard() {
   const [documents, setDocuments] = useState<Document[]>([]);
   const [refetchPayments, setRefetchPayments] = useState(0);
   const [refetchDocuments, setRefetchDocuments] = useState(0);
+
+  const [user, setUser] = useState<User | null>(null);
+
+  const supabase = createClient();
+
+  async function getUserData() {
+    const { data } = await supabase.auth.getUser();
+
+    if (data?.user) setUser(data.user);
+  }
+  useEffect(() => {
+    getUserData();
+  }, []);
 
   async function getDocumentss() {
     const res = await getDocuments();
@@ -68,20 +86,22 @@ export default function Dashboard() {
               <p className="text-sm text-gray-500">
                 Created at: {new Date(payment?.createdAt).toLocaleString()}
               </p>
-              <button
-                onClick={() => {
-                  makeStripePayment({
-                    title: payment.title,
-                    price: payment.amount,
-                  });
-                }}
-              >
-                <img
-                  src="/stripe.png"
-                  alt="download"
-                  className="w-[100px] h-6 object-cover rounded-md"
-                />
-              </button>
+              {user?.user_metadata?.role === "user" && (
+                <button
+                  onClick={() => {
+                    makeStripePayment({
+                      title: payment.title,
+                      price: payment.amount,
+                    });
+                  }}
+                >
+                  <img
+                    src="/stripe.png"
+                    alt="download"
+                    className="w-[100px] h-6 object-cover rounded-md"
+                  />
+                </button>
+              )}
             </CardFooter>
           </Card>
         ))}

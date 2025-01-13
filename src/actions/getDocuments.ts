@@ -28,7 +28,6 @@ export default async function getDocuments() {
       },
     });
   }
-  console.log("🚀 ~ getDocuments ~ documents:", documents);
 
   return {
     success: true,

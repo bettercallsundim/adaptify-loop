@@ -81,6 +81,5 @@ npm run dev
 
 ### To Do
 
-- **Error Handling**: Handle errors gracefully and provide meaningful error messages to users.
 - **Email Notifications**: Updates for status changes.
 - **PDF Invoices**: Generate invoices for completed payments.
